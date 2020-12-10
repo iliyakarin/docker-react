@@ -1,4 +1,5 @@
 sudo: required
+language: generic
 services:
   - docker
 
@@ -6,17 +7,16 @@ before_install:
   - docker build -t iliyakarin/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run iliyakarin/docker-react npm run test -- --coverage
+  - docker run -e CI=true iliyakarin/docker-react npm run test
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-2"
-  app: "docker"
-  env: "Docker-env"
-  bucket_name: "elasticbeanstalk-us-east-2-804066141946"
-  bucket_path: "docker"
+  region: "eu-north-1"
+  app: "docker-react-ikarin"
+  env: "DockerReactIkarin-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-804066141946"
+  bucket_path: "docker-react-ikarin"
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
