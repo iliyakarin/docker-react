@@ -14,7 +14,7 @@ deploy:
   provider: elasticbeanstalk
   region: "eu-north-1"
   app: "docker-react-ikarin"
-  env: "DockerReactIkarin-env"
+  env: "DockerReactIkarin-env-1"
   bucket_name: "elasticbeanstalk-eu-north-1-804066141946"
   bucket_path: "docker-react-ikarin"
   on:
